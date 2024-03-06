@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code Scanner</title>
+  <link rel="stylesheet" href="style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9371976363197718"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <header class="header">
+    <a class="logo">QR Code Scanner</a>
+  
+  
+    <input type="checkbox" name="" id="check">
+    <label for="check" class="icon">
+      <img srcset="" src="img/menu.svg" alt="menu" width="45px" id="menu">
+      <img srcset="" src="img/menu.svg" alt="menu" width="45px" id="close">
+    </label>
+  
+  
+    <nav class="navbar">
+      <a href="home.html" style="--i:0;">Home</a>
+      <a href="Qr.html" style="--i:1;" >Generate Qr code </a>
+     <a href="tem.html" style="--i:1;" >Template Of Graphics</a>
+      <a href="scan.html" style="--i:3;" id="active">Scan Qr Code</a>
+    </nav>
+    
+  </header>
+    
+    
+    
+  <h1 class="t">QR Code Scanner</h1>
+  <video id="video" width="300" height="200"></video>
+  <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+  <script>
+    let scanner = new Instascan.Scanner({ video: document.getElementById('video') });
+
+    scanner.addListener('scan', function(content) {
+      alert('Scanned: ' + content);
+      // You can do something with the scanned content here
+    });
+
+    Instascan.Camera.getCameras().then(function(cameras) {
+      if (cameras.length > 0) {
+        scanner.start(cameras[0]);
+      } else {
+        console.error('No cameras found.');
+      }
+    }).catch(function(e) {
+      console.error(e);
+    });
+  </script>
+</body>
+</html>
